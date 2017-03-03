@@ -1,0 +1,47 @@
+*{
+  -webkit-padding-start: 0;
+  box-sizing: border-box;
+}
+
+html, body, ul, li{
+  padding: 0;
+  margin: 0;
+}
+
+html, body{
+  font-family: Arial, sans-serif;
+}
+
+.todo-container{
+  width: 700px;
+}
+
+.todo-title{
+  padding: 10px;
+  background-color: cornflowerblue;
+}
+
+.todo-body{
+  padding: 10px;
+  background-color: lightgrey;
+}
+
+.todo-item{
+  padding: 10px;
+  border-bottom: 1px solid darkgray;
+  font-size: 0;
+}
+
+.todo-item:last-child{
+  border-bottom: none;
+}
+
+.todo-item span{
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.todo-item span:last-child{
+  margin-right: 0;
+}
