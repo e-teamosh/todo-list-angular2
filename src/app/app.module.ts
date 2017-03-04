@@ -6,6 +6,7 @@ import {TodoComponent}  from './todo/todo.component';
 import {TodoTitleComponent} from "./todo-title/todo-title.component";
 import {TodoBodyComponent} from "./todo-body/todo-body.component";
 import {RouterModule} from "@angular/router";
+import {NewItemComponent} from "./new-item/new-item.component";
 
 @NgModule({
   imports:      [
@@ -16,7 +17,8 @@ import {RouterModule} from "@angular/router";
         component: TodoComponent
       },
       {
-        path: 'new'
+        path: 'new',
+        component: NewItemComponent
       }
     ])
   ],
@@ -24,7 +26,8 @@ import {RouterModule} from "@angular/router";
     AppComponent,
     TodoComponent,
     TodoTitleComponent,
-    TodoBodyComponent
+    TodoBodyComponent,
+    NewItemComponent
   ],
   bootstrap:    [ AppComponent ]
 })
