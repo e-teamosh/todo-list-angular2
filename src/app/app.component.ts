@@ -3,7 +3,10 @@ import {Component} from "@angular/core";
 @Component({
   selector: 'my-app',
   template: `
-    <a routerLink="/list">Watch List</a>
+    <nav>
+      <a routerLink="/list">Watch List</a>
+      <a routerLink="/new">Add Item</a>
+    </nav>
     <router-outlet></router-outlet>
   `
 })

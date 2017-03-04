@@ -13,6 +13,11 @@ import {NewItemComponent} from "./new-item/new-item.component";
     BrowserModule,
     RouterModule.forRoot([
       {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      },
+      {
         path: 'list',
         component: TodoComponent
       },
