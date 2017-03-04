@@ -8,9 +8,9 @@ import {Tasks} from "../tasks";
         <div class="todo-body">
           <ul class="todo-list">
               <li class="todo-item" *ngFor="let task of tasks" (click)="toggleStatus(task.id)">
-                  <span>{{task.title}}</span>
-                  <span>{{task.text}}</span>
-                  <span>{{task.isDone ? "&#10003;" : "&#10007;"}}</span>
+                  <span class="todo-item-status">{{task.isDone ? "&#10003;" : "&#10007;"}}</span>
+                  <span class="todo-item-title">{{task.title}}</span>
+                  <span class="todo-item-text">{{task.text}}</span>
               </li>
           </ul>
         </div>

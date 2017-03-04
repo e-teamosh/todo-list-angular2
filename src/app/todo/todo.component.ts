@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Tasks} from "./tasks";
-import {TodoService} from "./todo.service";
+import {Tasks} from "../tasks";
+import {TodoService} from "../todo.service";
 
 @Component({
-  selector: 'my-app',
+  selector: 'todo',
   template: `
     <div class="todo-container">
         <todo-title [name]="name"></todo-title>
@@ -13,7 +13,7 @@ import {TodoService} from "./todo.service";
   providers: [TodoService]
 })
 
-export class AppComponent implements OnInit {
+export class TodoComponent implements OnInit {
   name = 'TODO List';
   tasks: Tasks[];
 

@@ -30,6 +30,7 @@ html, body{
   padding: 10px;
   border-bottom: 1px solid darkgray;
   font-size: 0;
+  cursor: pointer;
 }
 
 .todo-item:last-child{
@@ -44,4 +45,16 @@ html, body{
 
 .todo-item span:last-child{
   margin-right: 0;
+}
+
+.todo-item-title{
+  width: 50px;
+}
+
+.todo-item-text{
+  width: 200px;
+}
+
+.todo-item-status{
+  width: 50px;
 }
