@@ -7,6 +7,8 @@ import {TodoTitleComponent} from "./todo-title/todo-title.component";
 import {TodoBodyComponent} from "./todo-body/todo-body.component";
 import {RouterModule} from "@angular/router";
 import {NewItemComponent} from "./new-item/new-item.component";
+import {TodoService} from "./todo.service";
+import {TodoDetailComponent} from "./todo-detail/todo-detail.component";
 
 @NgModule({
   imports:      [
@@ -24,6 +26,10 @@ import {NewItemComponent} from "./new-item/new-item.component";
       {
         path: 'new',
         component: NewItemComponent
+      },
+      {
+        path: 'detail/:id',
+        component: TodoDetailComponent
       }
     ])
   ],
@@ -34,6 +40,7 @@ import {NewItemComponent} from "./new-item/new-item.component";
     TodoBodyComponent,
     NewItemComponent
   ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [TodoService]
 })
 export class AppModule { }

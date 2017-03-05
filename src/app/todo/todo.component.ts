@@ -9,8 +9,7 @@ import {TodoService} from "../todo.service";
         <todo-title [name]="name"></todo-title>
         <todo-body [tasks]="tasks"></todo-body>
     </div>
-  `,
-  providers: [TodoService]
+  `
 })
 
 export class TodoComponent implements OnInit {
