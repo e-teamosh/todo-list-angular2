@@ -58,3 +58,9 @@ html, body{
 .todo-item-status{
   width: 50px;
 }
+
+nav{
+  padding: 20px 0;
+}
+
+nav button

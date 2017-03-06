@@ -23,6 +23,6 @@ export class TodoComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.tasks = this.todoService.getTodoList();
+     this.todoService.getTodoList().then(tasks => this.tasks = tasks);
   }
 }

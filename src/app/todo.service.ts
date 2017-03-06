@@ -10,10 +10,11 @@ var TASKS: Tasks[] = [
 @Injectable()
 export class TodoService{
     getTodoList(): Promise<Tasks[]> {
-        return new Promise(resolve => TASKS);
+        return Promise.resolve(TASKS);
     }
     getTodoItem(taskId: number): Promise<Tasks> {
-      return this.getTodoList().then((tasks: Tasks[]) => tasks.find(task => task.id === taskId));
+      return this.getTodoList()
+          .then((tasks: Tasks[]) => tasks.find(task => task.id === taskId));
     }
     toggleTaskStatus(taskId: number): void {
         let task = TASKS.find((task) => {
