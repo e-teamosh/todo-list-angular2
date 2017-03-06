@@ -1,20 +1,13 @@
 import {Component, OnInit} from "@angular/core";
 import {TodoService} from "../todo.service";
 import {ActivatedRoute, Params} from "@angular/router";
-import {Location} from "@angular/common";
 import 'rxjs/add/operator/switchMap';
 import {Tasks} from "../tasks";
 
 @Component({
+  moduleId: module.id,
   selector: 'todo-detail',
-  template: `
-    <div class="todo-detail" *ngIf="todoItem">
-        <h1>title: {{todoItem.title | uppercase}}</h1>
-        <h4>text: {{todoItem.text}}</h4>
-        <h4>status: {{todoItem.isDone ? 'Done' : 'Working on it'}}</h4>
-        <a routerLink="/list" class="todo-link-back">Back</a>
-    </div>
-  `
+  templateUrl: 'todo-detail.component.html'
 })
 
 export class TodoDetailComponent implements OnInit {
@@ -22,8 +15,7 @@ export class TodoDetailComponent implements OnInit {
 
     constructor(
       private todoService: TodoService,
-      private route: ActivatedRoute,
-      private location: Location
+      private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {

@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {AppComponent} from "./app.component";
 import {TodoComponent}  from './todo/todo.component';
-import {TodoBodyComponent} from "./todo-body/todo-body.component";
 import {NewItemComponent} from "./new-item/new-item.component";
 import {TodoService} from "./todo.service";
 import {TodoDetailComponent} from "./todo-detail/todo-detail.component";
@@ -21,7 +20,6 @@ import {Location} from "@angular/common";
   declarations: [
     AppComponent,
     TodoComponent,
-    TodoBodyComponent,
     NewItemComponent,
     TodoDetailComponent
   ],

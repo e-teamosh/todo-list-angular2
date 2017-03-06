@@ -3,18 +3,9 @@ import {Tasks} from "../tasks";
 import {TodoService} from "../todo.service";
 
 @Component({
+  moduleId: module.id,
   selector: 'todo-list',
-  template: `
-    <div class="todo-body">
-      <ul class="todo-list">
-        <li class="todo-item {{task.isDone ? 'done' : ''}}" *ngFor="let task of tasks">
-          <span (click)="toggleStatus(task.id)" class="todo-item-span todo-item-status">{{task.isDone ? "&#10007;" : "&nbsp;"}}</span>
-          <a [routerLink]="['/detail', task.id]" class="todo-item-span todo-item-title">{{task.title}}</a>
-          <span class="todo-item-span todo-item-text">{{task.text}}</span>
-        </li>
-      </ul>
-    </div>
-  `
+  templateUrl: 'todo.component.html'
 })
 
 export class TodoComponent implements OnInit {
@@ -29,5 +20,9 @@ export class TodoComponent implements OnInit {
 
   getTasks(): void {
      this.todoService.getTodoList().then(tasks => this.tasks = tasks);
+  }
+
+  toggleStatus(taskId: number) {
+      this.todoService.toggleTaskStatus(taskId);
   }
 }
