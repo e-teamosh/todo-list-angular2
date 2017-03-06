@@ -37,13 +37,18 @@ html, body{
   border-bottom: none;
 }
 
-.todo-item span{
+.todo-item.done .todo-item-span{
+  text-decoration: line-through;
+  color: dimgrey;
+}
+
+.todo-item-span{
   display: inline-block;
   margin-right: 10px;
   font-size: 14px;
 }
 
-.todo-item span:last-child{
+.todo-item-span:last-child{
   margin-right: 0;
 }
 
@@ -59,8 +64,26 @@ html, body{
   width: 50px;
 }
 
-nav{
-  padding: 20px 0;
+.todo-nav{
+  padding: 20px;
+  font-size: 0;
 }
 
-nav button
+.todo-nav-item{
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 10px 0 0;
+  text-decoration: none;
+  background-color: darkgray;
+  font-size: 16px;
+  color: black;
+}
+.todo-nav-item.active{
+  background-color: cornflowerblue;
+}
+.todo-nav-item:last-child{
+  margin-right: 0;
+}
+.todo-nav-item:hover{
+  text-decoration: underline;
+}
