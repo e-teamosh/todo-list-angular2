@@ -12,6 +12,7 @@ import {Tasks} from "../tasks";
         <h1>title: {{todoItem.title | uppercase}}</h1>
         <h4>text: {{todoItem.text}}</h4>
         <h4>status: {{todoItem.isDone ? 'Done' : 'Working on it'}}</h4>
+        <a routerLink="/list" class="todo-link-back">Back</a>
     </div>
   `
 })

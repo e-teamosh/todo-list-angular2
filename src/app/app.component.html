@@ -1,0 +1,10 @@
+<section class="todo-container">
+    <header class="todo-title">
+        <h1>{{title}}</h1>
+    </header>
+    <nav class="todo-nav">
+        <a routerLink="/list" routerLinkActive="active" class="todo-nav-item">List</a>
+        <a routerLink="/new" routerLinkActive="active" class="todo-nav-item">Add new</a>
+    </nav>
+    <router-outlet></router-outlet>
+</section>
