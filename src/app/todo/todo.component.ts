@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Tasks} from "../tasks";
 import {TodoService} from "../todo.service";
 
@@ -8,7 +8,7 @@ import {TodoService} from "../todo.service";
   templateUrl: 'todo.component.html'
 })
 
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   name = 'TODO List';
   tasks: Tasks[];
 
@@ -18,7 +18,15 @@ export class TodoComponent implements OnInit {
      this.getTasks();
   }
 
+  ngOnDestroy(): void {
+    this.saveTasks();
+  }
+
   getTasks(): void {
      this.tasks = this.todoService.getTodoList();
+  }
+
+  saveTasks(): void {
+    this.todoService.saveItems(this.tasks);
   }
 }
