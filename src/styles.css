@@ -30,7 +30,6 @@ html, body{
   padding: 10px;
   border-bottom: 1px solid darkgray;
   font-size: 0;
-  cursor: pointer;
 }
 
 .todo-item:last-child{
@@ -70,6 +69,7 @@ html, body{
   border: 1px solid darkgrey;
   text-align: center;
   padding: 3px;
+  cursor: pointer;
 }
 
 .todo-nav{
