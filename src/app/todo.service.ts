@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {Injectable, OnInit} from "@angular/core";
 import {Tasks} from "./tasks";
 
 var TASKS: Tasks[] = [
@@ -10,39 +10,35 @@ var TASKS: Tasks[] = [
 
 @Injectable()
 export class TodoService {
+  tasks: Tasks[] = JSON.parse(localStorage.getItem('todo-item')) || [];
 
-  getTodoList(): Promise<Tasks[]> {
-    return Promise.resolve(TASKS);
+  getTodoList(): Tasks[] {
+    return this.tasks;
   }
-  getTodoItem(taskId: number): Promise<Tasks> {
-    return this.getTodoList()
-      .then(tasks => tasks.find(task => task.id === taskId));
+
+  getTodoItem(taskId: number): Tasks {
+    return this.getTodoList().find(task => task.id === taskId);
   }
 
   toggleTaskStatus(taskId: number): void {
-    let task = TASKS.find(task => task.id === taskId);
+    let task = this.tasks.find(task => task.id === taskId);
     task.isDone = !task.isDone;
   }
 
   addItem(title: string, text: string): boolean {
-    let itemsCount: number = 0;
-    this.getTodoList()
-      .then(tasks => {
-        itemsCount = tasks.length;
-        try {
-          TASKS.push({
-            id: itemsCount,
-            title: title,
-            text: text,
-            isDone: false
-          });
-        } catch (err) {
-          console.log(err);
-          return false;
-        }
-      })
-      .catch(error => console.log(error));
+    let itemsCount = this.tasks.length;
 
+    try {
+      this.tasks.push({
+        id: itemsCount,
+        title: title,
+        text: text,
+        isDone: false
+      });
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
     return true;
   }
 }
