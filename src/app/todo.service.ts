@@ -13,20 +13,25 @@ const VARIABLE_NAME = 'todo-items';
 
 @Injectable()
 export class TodoService {
+  tasks: Tasks[];
+
+  init(): void {
+    this.tasks = JSON.parse(localStorage.getItem(VARIABLE_NAME)) || [];
+  }
 
   getTodoList(): Tasks[] {
-    return JSON.parse(localStorage.getItem(VARIABLE_NAME)) || [];
+    return this.tasks;
   }
 
-  getTodoItem(taskId: number, tasks: Tasks[]): Tasks {
-    return tasks.find(task => task.id === taskId);
+  getTodoItem(taskId: number): Tasks {
+    return this.tasks.find(task => task.id === taskId);
   }
 
-  addItem(title: string, text: string, tasks: Tasks[]): Tasks[] {
-    let itemsCount = tasks.length;
+  addItem(title: string, text: string): boolean {
+    let itemsCount = this.tasks.length;
 
     try {
-      tasks.push({
+      this.tasks.push({
         id: itemsCount,
         title: title,
         text: text,
@@ -34,12 +39,13 @@ export class TodoService {
       });
     } catch (err) {
       console.log(err);
+      return false;
     }
 
-    return tasks;
+    return true;
   }
 
-  saveItems(tasks: Tasks[]): void {
-    localStorage.setItem(VARIABLE_NAME,JSON.stringify(tasks));
+  saveItems(): void {
+    localStorage.setItem(VARIABLE_NAME,JSON.stringify(this.tasks));
   }
 }

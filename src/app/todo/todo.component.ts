@@ -27,6 +27,6 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   saveTasks(): void {
-    this.todoService.saveItems(this.tasks);
+    this.todoService.saveItems();
   }
 }
