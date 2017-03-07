@@ -1,5 +1,6 @@
 import {Injectable, OnInit} from "@angular/core";
 import {Tasks} from "./tasks";
+import {Task} from "protractor/built/taskScheduler";
 
 var TASKS: Tasks[] = [
   {id: 0, title: 'first', text: 'create todo list', isDone: false},
@@ -7,29 +8,25 @@ var TASKS: Tasks[] = [
   {id: 2, title: 'third', text: 'make first task done', isDone: false}
 ];
 
+const VARIABLE_NAME = 'todo-items';
+
 
 @Injectable()
 export class TodoService {
-  tasks: Tasks[] = JSON.parse(localStorage.getItem('todo-item')) || [];
 
   getTodoList(): Tasks[] {
-    return this.tasks;
+    return JSON.parse(localStorage.getItem(VARIABLE_NAME)) || [];
   }
 
-  getTodoItem(taskId: number): Tasks {
-    return this.getTodoList().find(task => task.id === taskId);
+  getTodoItem(taskId: number, tasks: Tasks[]): Tasks {
+    return tasks.find(task => task.id === taskId);
   }
 
-  toggleTaskStatus(taskId: number): void {
-    let task = this.tasks.find(task => task.id === taskId);
-    task.isDone = !task.isDone;
-  }
-
-  addItem(title: string, text: string): boolean {
-    let itemsCount = this.tasks.length;
+  addItem(title: string, text: string, tasks: Tasks[]): Tasks[] {
+    let itemsCount = tasks.length;
 
     try {
-      this.tasks.push({
+      tasks.push({
         id: itemsCount,
         title: title,
         text: text,
@@ -37,8 +34,12 @@ export class TodoService {
       });
     } catch (err) {
       console.log(err);
-      return false;
     }
-    return true;
+
+    return tasks;
+  }
+
+  saveItems(tasks: Tasks[]): void {
+    localStorage.setItem(VARIABLE_NAME,JSON.stringify(tasks));
   }
 }

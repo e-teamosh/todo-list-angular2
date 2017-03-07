@@ -21,8 +21,4 @@ export class TodoComponent implements OnInit {
   getTasks(): void {
      this.tasks = this.todoService.getTodoList();
   }
-
-  toggleStatus(taskId: number) {
-      this.todoService.toggleTaskStatus(taskId);
-  }
 }
