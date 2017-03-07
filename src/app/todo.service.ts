@@ -1,15 +1,7 @@
 import {Injectable, OnInit} from "@angular/core";
 import {Tasks} from "./tasks";
-import {Task} from "protractor/built/taskScheduler";
-
-var TASKS: Tasks[] = [
-  {id: 0, title: 'first', text: 'create todo list', isDone: false},
-  {id: 1, title: 'second', text: 'add first task', isDone: true},
-  {id: 2, title: 'third', text: 'make first task done', isDone: false}
-];
 
 const VARIABLE_NAME = 'todo-items';
-
 
 @Injectable()
 export class TodoService {
@@ -24,7 +16,7 @@ export class TodoService {
   }
 
   getTodoItem(taskId: number): Tasks {
-    return this.tasks.find(task => task.id === taskId);
+    return this.getTodoList().find(task => task.id === taskId);
   }
 
   addItem(title: string, text: string): boolean {
