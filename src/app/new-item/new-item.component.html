@@ -1,8 +1,13 @@
 <div class="todo-new-item">
     <div class="todo-error" *ngIf="error">{{error}}</div>
-    <label for="title">title:</label>
-    <input class="todo-input" name="title" id="title" placeholder="set your title" [(ngModel)]="title"/>
-    <label for="text">text:</label>
-    <textarea class="todo-input" name="text" id="text" placeholder="set your text" [(ngModel)]="text"></textarea>
+    <div class="todo-success" *ngIf="success">{{success}}</div>
+    <div class="todo-form-group">
+        <label class="todo-input-label" for="title">Title</label>
+        <input class="todo-input" name="title" id="title" placeholder="set your title" [(ngModel)]="title"/>
+    </div>
+    <div class="todo-form-group">
+        <label class="todo-input-label" for="text">Text</label>
+        <textarea class="todo-input" name="text" id="text" placeholder="set your text" [(ngModel)]="text"></textarea>
+    </div>
     <button type="submit" class="todo-button" (click)="onSubmit()">Submit</button>
 </div>

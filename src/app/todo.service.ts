@@ -10,10 +10,10 @@ var TASKS: Tasks[] = [
 
 @Injectable()
 export class TodoService {
+
   getTodoList(): Promise<Tasks[]> {
     return Promise.resolve(TASKS);
   }
-
   getTodoItem(taskId: number): Promise<Tasks> {
     return this.getTodoList()
       .then(tasks => tasks.find(task => task.id === taskId));
@@ -25,21 +25,24 @@ export class TodoService {
   }
 
   addItem(title: string, text: string): boolean {
-    let tasksCount: number = 0;
+    let itemsCount: number = 0;
     this.getTodoList()
-      .then(tasks => tasksCount = tasks.length)
+      .then(tasks => {
+        itemsCount = tasks.length;
+        try {
+          TASKS.push({
+            id: itemsCount,
+            title: title,
+            text: text,
+            isDone: false
+          });
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      })
       .catch(error => console.log(error));
-    try {
-      TASKS.push({
-        id: tasksCount,
-        title: title,
-        text: text,
-        isDone: false
-      });
-    } catch (err) {
-      console.log(err);
-      return false;
-    }
+
     return true;
   }
 }
