@@ -35,10 +35,12 @@ export class NewItemComponent implements OnInit{
       this.error = 'fill all fields';
       return false;
     }
-    if (this.todoService.addItem(this.title, this.text)) {
+    try {
+      this.todoService.addItem(this.title, this.text);
       this.success = 'item added';
-    } else {
+    } catch(err) {
       this.error = 'some error occurred';
+      console.error(err.message);
     }
     this.clearForm();
     return true;

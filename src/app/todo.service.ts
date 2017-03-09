@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Tasks} from "./tasks";
 
 const VARIABLE_NAME = 'todo-items';
@@ -19,22 +19,15 @@ export class TodoService {
     return this.getTodoList().find(task => task.id === taskId);
   }
 
-  addItem(title: string, text: string): boolean {
+  addItem(title: string, text: string): void {
     let itemsCount = this.tasks.length;
 
-    try {
-      this.tasks.push({
-        id: itemsCount,
-        title: title,
-        text: text,
-        isDone: false
-      });
-    } catch (err) {
-      console.log(err);
-      return false;
-    }
-
-    return true;
+    this.tasks.push({
+      id: itemsCount,
+      title: title,
+      text: text,
+      isDone: false
+    });
   }
 
   saveItems(): void {
